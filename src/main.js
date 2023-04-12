@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_1 = require("vue");
+require("./style.css");
+var App_vue_1 = require("./App.vue");
+var Cesium = require("cesium");
+var pinia_1 = require("pinia");
+require("./style/main.scss");
+var router_1 = require("./router");
+var pinia = (0, pinia_1.createPinia)();
+var app = (0, vue_1.createApp)(App_vue_1.default);
+app.config.globalProperties.$Cesium = Cesium;
+app.config.globalProperties.$Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNzFiMGRlNi04YjBmLTRmMWMtYjk5Ny1iZTMwZGJmNWQzN2IiLCJpZCI6NTA0MDgsImlhdCI6MTY1Nzk0NzIyNH0.s-VNwxFn26XgStOLVV-pd_ft88yOwpRtpVPGgB6v9UQ';
+app.use(pinia).use(router_1.default).mount('#app');
