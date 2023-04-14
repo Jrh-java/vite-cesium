@@ -12,6 +12,7 @@ let viewer:any=storeToRefs(store).viewer.value
 onMounted(() => {
     viewer = new Cesium.Viewer('cesiumContainer');
     viewer.entities.add({
+        
         show  :false,
         position: Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883),
         point: {
