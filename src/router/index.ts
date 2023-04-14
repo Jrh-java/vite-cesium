@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HelloWorld from '../components/HelloWorld.vue'
+import earth from '../components/earth.vue'
 import father from '../components/widgets/father.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/HelloWorld'
+    redirect: '/earth'
   },
   {
     path: '/father',
     component: father,
-    //redirect:'/HelloWorld',
+    //redirect:'/earth',
     // children:[{
-    //   path:"/HelloWorld",
-    //   component: HelloWorld,
+    //   path:"/earth",
+    //   component: earth,
     //   props:true,
     //   children:[{
     //     path: '/cesium1',
@@ -22,12 +22,12 @@ const routes: Array<RouteRecordRaw> = [
 
   },
   {
-    path: '/HelloWorld',
-    component: HelloWorld,
+    path: '/earth',
+    component: earth,
   },
   {
     path:"/:pathMatch(.*)*",
-    redirect: '/HelloWorld'
+    redirect: '/earth'
   },
   
   // {
