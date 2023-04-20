@@ -13,7 +13,7 @@ import son from './son.vue'
         const number=ref(0);
         const add=(num: number)=>{
             number.value=num;
-            console.log(num)
+            console.log(num+123)
         }
         const minus=(num: number)=>{
             number.value=num;
