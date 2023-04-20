@@ -1,5 +1,6 @@
 <template>
     <div id="cesiumContainer" class="h-full"></div>
+    <skyline></skyline>
 </template>
 
 <script lang="ts" setup>
@@ -7,10 +8,13 @@ import { onMounted, ref } from 'vue';
 import * as Cesium from 'cesium';
 import { useStore } from '../store/pinia';
 import { storeToRefs } from 'pinia'; 
+import skyline from './cesium/analysis/skyline.vue';
 const store = useStore();
-let viewer:any=storeToRefs(store).viewer.value
+
 onMounted(() => {
-    viewer = new Cesium.Viewer('cesiumContainer');
+    
+    let viewer: any = new Cesium.Viewer('cesiumContainer');
+    storeToRefs(store).viewer.value = viewer
     viewer.entities.add({
         
         show  :false,
