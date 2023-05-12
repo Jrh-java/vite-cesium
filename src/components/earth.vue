@@ -4,16 +4,16 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import * as Cesium from 'cesium';
 import { useStore } from '../store/pinia';
 import { storeToRefs } from 'pinia'; 
 import skyline from './cesium/analysis/skyline.vue';
 const store = useStore();
-
+let viewer: any
 onMounted(() => {
     
-    let viewer: any = new Cesium.Viewer('cesiumContainer');
+    viewer= new Cesium.Viewer('cesiumContainer');
     storeToRefs(store).viewer.value = viewer
     viewer.entities.add({
         
