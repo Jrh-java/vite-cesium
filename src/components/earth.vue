@@ -1,6 +1,7 @@
 <template>
     <div id="cesiumContainer" class="h-full"></div>
     <skyline></skyline>
+    <labelVue></labelVue>
 </template>
 
 <script lang="ts" setup>
@@ -9,6 +10,7 @@ import * as Cesium from 'cesium';
 import { useStore } from '../store/pinia';
 import { storeToRefs } from 'pinia'; 
 import skyline from './cesium/analysis/skyline.vue';
+import labelVue from './cesium/entity/label.vue';
 const store = useStore();
 let viewer: any
 onMounted(() => {

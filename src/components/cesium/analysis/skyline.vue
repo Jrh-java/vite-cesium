@@ -1,5 +1,5 @@
 <template>
-  <button @click="methods.startRendering">
+  <button @click="methods.startRendering()">
     <i class="iconfont iconxiangmuguanli" style="font-size: 16px; color: aqua"></i>
     startRendering
   </button>
@@ -19,8 +19,11 @@
     <i class="iconfont iconxiangmuguanli" style="font-size: 16px; color: aqua"></i>
     changecolor
   </button>
-  <button @click="methods.addLineWidth">
-    addLineWidth
+  <button @click="methods.startRendering('(1.0,1.0,1.0,1.0)',0.8)">
+    变蓝
+  </button>
+  <button @click="methods.startRendering('(0.0,1.0,1.0,1)',10)">
+    变红
   </button>
 </template>
 
@@ -33,6 +36,7 @@ import {
   ref,
   defineProps
 } from 'vue';
+import map from 'ol/map'
 import { useStore } from '../../../store/pinia';
 import { storeToRefs } from 'pinia';
 export default defineComponent({
@@ -52,12 +56,11 @@ export default defineComponent({
     var entity: any;
 
     const methods = {
-      startRendering() {
-        methods.addentity();
+      startRendering(color='(1.0,0.0,0.0,1.0)',length=1) {
         if (data.isAnalysis) {
           methods.clearAnalysisRes();
         } else {
-          methods.startAnalysis();
+          methods.startAnalysis(color,length);
         }
         data.isAnalysis = !data.isAnalysis;
       },
@@ -115,7 +118,8 @@ export default defineComponent({
       clearAnalysisRes() {
         analysisCollection.removeAll();
       },
-      startAnalysis() {
+      startAnalysis(color='(1.0,0.0,0.0,1.0)',length=1) {
+        
         analysisCollection = viewer.scene.postProcessStages;
         var edgeDetection =
           proxy.$Cesium.PostProcessStageLibrary.createEdgeDetectionStage();
@@ -139,30 +143,43 @@ export default defineComponent({
             '}'
         });
         var postProccessStage1 = new proxy.$Cesium.PostProcessStage({
-          name: 'czm_skylinetemp1',
-          fragmentShader:
-            'uniform sampler2D colorTexture;' +
-            'uniform sampler2D redTexture;' +
-            'uniform sampler2D silhouetteTexture;' +
-            'in vec2 v_textureCoordinates;' +
-            'out vec4 fragColor;' +
-            'void main(void)' +
-            '{' +
-            'vec4 redcolor=texture(redTexture, v_textureCoordinates);' +
-            'vec4 silhouetteColor = texture(silhouetteTexture, v_textureCoordinates);' +
-            'vec4 color = texture(colorTexture, v_textureCoordinates);' +
-            'if(redcolor.r == 1.0){' +
-            'fragColor = mix(color, vec4(1.0,0.0,0.0,1.0), silhouetteColor.a);' +
-            '}' +
-            'else{' +
-            'fragColor = color;' +
-            '}' +
-            '}',
-          uniforms: {
-            redTexture: postProccessStage.name,
-            silhouetteTexture: edgeDetection.name
-          }
-        });
+  name: 'czm_skylinetemp1',
+  fragmentShader:
+    'uniform sampler2D colorTexture;' +
+    'uniform sampler2D redTexture;' +
+    'uniform sampler2D silhouetteTexture;' +
+    'in vec2 v_textureCoordinates;' +
+    'out vec4 fragColor;' +
+    'void main(void)' +
+    '{' +
+    'vec4 redcolor=texture(redTexture, v_textureCoordinates);' +
+    'vec4 silhouetteColor = texture(silhouetteTexture, v_textureCoordinates);' +
+    'vec4 color = texture(colorTexture, v_textureCoordinates);' +
+    'if(redcolor.r == 1.0){' +
+    `fragColor = mix(color, vec4${color}, silhouetteColor.a);` +
+    '}' +
+    'else{' +
+    'fragColor = color;' +
+    '}' +
+    '}',
+  uniforms: {
+    redTexture: postProccessStage.name,
+    silhouetteTexture: edgeDetection.name,
+    lineWidth: 0 // 控制线条宽度的 uniform 变量
+  },
+  vertexShader:
+    'attribute vec3 position;' +
+    'attribute vec4 color;' +
+    'uniform mat4 modelViewProjection;' +
+    'uniform float lineWidth;' +
+    'varying vec4 v_color;' +
+    'void main() {' +
+    'gl_Position = modelViewProjection * vec4(position, 1.0);' +
+    'v_color = color;' +
+    'vec3 normal = normalize(cross(dFdx(position), dFdy(position)));' +
+    'gl_Position.xyz += normal * (lineWidth / 2.0);' +
+    '}'
+});
         var postProccessStage = new proxy.$Cesium.PostProcessStageComposite({
           name: 'czm_skyline',
           stages: [edgeDetection, postProccessStage, postProccessStage1],
@@ -170,16 +187,6 @@ export default defineComponent({
           uniforms: edgeDetection.uniforms
         });
         analysisCollection.add(postProccessStage);
-      },
-      addLineWidth() {
-        // 获取后期处理阶段组合
-        const postProcessStage = viewer.scene.postProcessStages.getByName('czm_skyline');
-
-        // 获取当前线条宽度
-        const lineWidth = postProcessStage.uniforms.lineWidth;
-
-        // 将线条宽度增加 1
-        postProcessStage.uniforms.lineWidth = lineWidth + 1;
       }
     };
 

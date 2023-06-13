@@ -6,6 +6,7 @@ import { createPinia } from "pinia";
 import  './style/main.scss';
 import router from './router'
 import { register } from './components/widgets'
+import map from 'ol/map'
 const pinia = createPinia();
 const app = createApp(App)
 register(app);
