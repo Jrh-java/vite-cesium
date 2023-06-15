@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import earth from '../components/earth.vue'
 import father from '../components/widgets/father.vue'
+import homeVue from '../components/layout/home.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
@@ -24,6 +25,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/earth',
     component: earth,
+  },
+  {
+    path: '/home',
+    component: homeVue,
   },
   {
     path:"/:pathMatch(.*)*",
