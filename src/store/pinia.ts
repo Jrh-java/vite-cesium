@@ -5,14 +5,14 @@ export const useStore = defineStore('piniaStore', {
     state: () => {
         return {
             viewer: null,
-            timeMachine : null
+            timeMachine : null as NodeJS.Timer | null // 将 timeMachine 定义为 NodeJS.Timer 类型或 null 类型
         }
     },
     actions: {
         async getViewer() {
             if (this.viewer != null) {
               console.log(this.viewer);
-              clearInterval(this.timeMachine);
+              clearInterval(this.timeMachine!);
               this.timeMachine = null;
               return this.viewer;
             } else {
@@ -22,7 +22,7 @@ export const useStore = defineStore('piniaStore', {
                   this.timeMachine = setInterval(() => {
                     if (this.viewer != null) {
                       console.log(this.viewer);
-                      clearInterval(this.timeMachine);
+                      clearInterval(this.timeMachine!);
                       this.timeMachine = null;
                       resolve(this.viewer);
                     }

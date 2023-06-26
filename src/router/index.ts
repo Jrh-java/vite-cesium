@@ -5,7 +5,7 @@ import homeVue from '../components/layout/home.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/earth'
+    redirect: '/home'
   },
   {
     path: '/father',

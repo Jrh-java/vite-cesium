@@ -56,6 +56,9 @@ export default defineComponent({
     var entity: any;
 
     const methods = {
+      changecolor() {
+        entity.box.material.uniforms.color = proxy.$Cesium.Color.RED;
+      },
       startRendering(color='(1.0,0.0,0.0,1.0)',length=1) {
         if (data.isAnalysis) {
           methods.clearAnalysisRes();

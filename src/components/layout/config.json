@@ -1,0 +1,14 @@
+{
+    "widgetArr":[
+        {
+            "name":"widget1",
+            "type":"widget",
+            "component":"skylineVue"
+        },
+        {
+            "name":"widget2",
+            "type":"widget",
+            "component":"test"
+        }
+    ]
+}
