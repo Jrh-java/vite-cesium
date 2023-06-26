@@ -13,8 +13,9 @@ import skyline from './cesium/analysis/skyline.vue';
 import labelVue from './cesium/entity/label.vue';
 const store = useStore();
 let viewer: any
+
 onMounted(() => {
-    
+    console.log()
     viewer= new Cesium.Viewer('cesiumContainer');
     storeToRefs(store).viewer.value = viewer
     viewer.entities.add({
