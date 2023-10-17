@@ -9,6 +9,21 @@
             "name":"widget2",
             "type":"widget",
             "component":"test"
+        },
+        {
+            "name":"测试模块",
+            "type":"widget",
+            "component":"testClick"
+        },
+        {
+            "name":"父子组件测试",
+            "type":"widget",
+            "component":"fatherVue"
+        },
+        {
+            "name":"实体组件测试",
+            "type":"widget",
+            "component":"entitiesVue"
         }
     ]
 }

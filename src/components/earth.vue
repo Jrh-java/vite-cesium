@@ -1,7 +1,8 @@
 <template>
     <div id="cesiumContainer" class="h-full"></div>
-    <skyline></skyline>
-    <labelVue></labelVue>
+    <!-- <skyline></skyline> -->
+    <!-- <labelVue></labelVue> -->
+    <!-- <testClick></testClick> -->
 </template>
 
 <script lang="ts" setup>
@@ -11,12 +12,16 @@ import { useStore } from '../store/pinia';
 import { storeToRefs } from 'pinia'; 
 import skyline from './cesium/analysis/skyline.vue';
 import labelVue from './cesium/entity/label.vue';
+import resizepanel from './widgets/resizepanel.vue';
+import testClick from './test/testClick.vue';
 const store = useStore();
 let viewer: any
 
 onMounted(() => {
     console.log()
-    viewer= new Cesium.Viewer('cesiumContainer');
+    viewer= new Cesium.Viewer('cesiumContainer',{animation: false,timeline: false,fullscreenButton:false,infoBox: false,homeButton:false,geocoder:false,sceneModePicker:false,selectionIndicator:false,baseLayerPicker:false,navigationHelpButton:false});
+    // 隐藏版权信息
+viewer._cesiumWidget._creditContainer.style.display = "none";
     storeToRefs(store).viewer.value = viewer
     viewer.entities.add({
         

@@ -1,0 +1,450 @@
+{
+  "id": "3571988",
+  "name": "cesium",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "167169",
+      "name": "数据展示",
+      "font_class": "shujuzhanshi",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "7898738",
+      "name": "数据分析-流量分析",
+      "font_class": "shujufenxi-liuliangfenxi",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8718269",
+      "name": "规划",
+      "font_class": "guihua",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "17605457",
+      "name": "地球",
+      "font_class": "diqiu",
+      "unicode": "e811",
+      "unicode_decimal": 59409
+    },
+    {
+      "icon_id": "17937317",
+      "name": "测量",
+      "font_class": "celiang",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "37185659",
+      "name": "达标率分析",
+      "font_class": "dabiaolvfenxi",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "37185660",
+      "name": "传输有效率",
+      "font_class": "chuanshuyouxiaolv",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "37185661",
+      "name": "实时数据",
+      "font_class": "shishishuju",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "37186120",
+      "name": "数据完整性",
+      "font_class": "shujuwanzhengxing",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "37186677",
+      "name": "历史数据",
+      "font_class": "lishishuju",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "37186740",
+      "name": "超标数据",
+      "font_class": "chaobiaoshuju",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "37186777",
+      "name": "多站对比",
+      "font_class": "duozhanduibi",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "37186895",
+      "name": "开关设备",
+      "font_class": "kaiguanshebei",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "37187260",
+      "name": "污染物报表",
+      "font_class": "wuranwubaobiao",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "37187458",
+      "name": "吨水耗电量",
+      "font_class": "dunshuihaodianliang",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "37187581",
+      "name": "缺陷申报",
+      "font_class": "quxianshenbao",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "37187582",
+      "name": "数据采集率",
+      "font_class": "shujucaijilv",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "37187622",
+      "name": "水耗统计",
+      "font_class": "shuihaotongji",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "37187623",
+      "name": "缺陷统计率",
+      "font_class": "quexiantongjilv",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "37187637",
+      "name": "我的流程",
+      "font_class": "wodeliucheng",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "37187951",
+      "name": "历史报警",
+      "font_class": "lishibaojin",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "37187953",
+      "name": "交班登记",
+      "font_class": "jiaobandengji",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "37196576",
+      "name": "流量趋势",
+      "font_class": "liuliangqushi",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "37196577",
+      "name": "增量分析",
+      "font_class": "zengliangfenxi",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "37196578",
+      "name": "电量分析",
+      "font_class": "dianliangfenxi",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "37196579",
+      "name": "药耗总量",
+      "font_class": "yaohaozongliang",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "37196580",
+      "name": "实时报警",
+      "font_class": "shishibaojin",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "37196949",
+      "name": "总量分析",
+      "font_class": "zongliangfenxi",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "37197388",
+      "name": "日程安排",
+      "font_class": "richenganpai",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "37197389",
+      "name": "定点投药",
+      "font_class": "dingdiantouyao",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "31157383",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "31403620",
+      "name": "用例变更日志",
+      "font_class": "yonglibiangengrizhi",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "31403621",
+      "name": "项目管理",
+      "font_class": "xiangmuguanli",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "31403622",
+      "name": "通道管理",
+      "font_class": "tongdaoguanli",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "31403623",
+      "name": "创建任务",
+      "font_class": "chuangjianrenwu",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "31403624",
+      "name": "Proxy",
+      "font_class": "Proxy",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "31403625",
+      "name": "测试详情",
+      "font_class": "ceshixiangqing",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "31403626",
+      "name": "zidingy",
+      "font_class": "zidingy",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "31403627",
+      "name": "设备测试",
+      "font_class": "shebeiceshi",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "31403628",
+      "name": "用例库",
+      "font_class": "yongliku",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "31403629",
+      "name": "任务中心",
+      "font_class": "renwuzhongxin",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "31403630",
+      "name": "设备管理",
+      "font_class": "shebeiguanli",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "31403631",
+      "name": "字典表",
+      "font_class": "zidianbiao",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "31403632",
+      "name": "客户管理",
+      "font_class": "kehuguanli",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "31403633",
+      "name": "规则引擎",
+      "font_class": "guizeyinqing",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "31403634",
+      "name": "角色",
+      "font_class": "jiaose",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "31403635",
+      "name": "角色管理",
+      "font_class": "jiaoseguanli",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "31403636",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "31403637",
+      "name": "测试记录",
+      "font_class": "ceshijilu",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "31403638",
+      "name": "操作日志",
+      "font_class": "caozuorizhi",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "31403639",
+      "name": "人员",
+      "font_class": "renyuan",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "31403640",
+      "name": "状态码维护",
+      "font_class": "zhuangtaimaweihu",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "31403641",
+      "name": "创建任务 2",
+      "font_class": "a-chuangjianrenwu2",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "31403642",
+      "name": "配置管理",
+      "font_class": "peizhiguanli",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "30178389",
+      "name": "会员",
+      "font_class": "huiyuan",
+      "unicode": "100da",
+      "unicode_decimal": 65754
+    },
+    {
+      "icon_id": "30178390",
+      "name": "笔记",
+      "font_class": "biji",
+      "unicode": "100db",
+      "unicode_decimal": 65755
+    },
+    {
+      "icon_id": "30178391",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin",
+      "unicode": "100dc",
+      "unicode_decimal": 65756
+    },
+    {
+      "icon_id": "30178392",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "100dd",
+      "unicode_decimal": 65757
+    },
+    {
+      "icon_id": "30178393",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "100de",
+      "unicode_decimal": 65758
+    },
+    {
+      "icon_id": "30178394",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "100df",
+      "unicode_decimal": 65759
+    },
+    {
+      "icon_id": "30178395",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "100e0",
+      "unicode_decimal": 65760
+    },
+    {
+      "icon_id": "30178396",
+      "name": "标签",
+      "font_class": "biaoqian",
+      "unicode": "100e1",
+      "unicode_decimal": 65761
+    },
+    {
+      "icon_id": "30178397",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "100e2",
+      "unicode_decimal": 65762
+    }
+  ]
+}

@@ -19,10 +19,10 @@
     <i class="iconfont iconxiangmuguanli" style="font-size: 16px; color: aqua"></i>
     changecolor
   </button>
-  <button @click="methods.startRendering('(1.0,1.0,1.0,1.0)',0.8)">
+  <button @click="methods.startRendering('(1.0,1.0,1.0,1.0)', 0.8)">
     变蓝
   </button>
-  <button @click="methods.startRendering('(0.0,1.0,1.0,1)',10)">
+  <button @click="methods.startRendering('(0.0,1.0,1.0,1)', 10)">
     变红
   </button>
 </template>
@@ -39,10 +39,19 @@ import {
 import map from 'ol/map'
 import { useStore } from '../../../store/pinia';
 import { storeToRefs } from 'pinia';
+import { A } from '../utils/test'
+import { h } from 'vue'
+import { render } from 'vue';
+import { onBeforeMount } from 'vue';
+import btn from "./index.vue"
 export default defineComponent({
   props: ['fatherdata'],
 
   setup(props) {
+   
+    let a = A("a", "b", "c")
+    console.log(a)
+    A("a", "x", "y", "d")
     const store = useStore();
     let viewer: any = store.viewer
     if (viewer == null) {
@@ -59,11 +68,11 @@ export default defineComponent({
       changecolor() {
         entity.box.material.uniforms.color = proxy.$Cesium.Color.RED;
       },
-      startRendering(color='(1.0,0.0,0.0,1.0)',length=1) {
+      startRendering(color = '(1.0,0.0,0.0,1.0)', length = 1) {
         if (data.isAnalysis) {
           methods.clearAnalysisRes();
         } else {
-          methods.startAnalysis(color,length);
+          methods.startAnalysis(color, length);
         }
         data.isAnalysis = !data.isAnalysis;
       },
@@ -121,8 +130,8 @@ export default defineComponent({
       clearAnalysisRes() {
         analysisCollection.removeAll();
       },
-      startAnalysis(color='(1.0,0.0,0.0,1.0)',length=1) {
-        
+      startAnalysis(color = '(1.0,0.0,0.0,1.0)', length = 1) {
+
         analysisCollection = viewer.scene.postProcessStages;
         var edgeDetection =
           proxy.$Cesium.PostProcessStageLibrary.createEdgeDetectionStage();
@@ -146,43 +155,43 @@ export default defineComponent({
             '}'
         });
         var postProccessStage1 = new proxy.$Cesium.PostProcessStage({
-  name: 'czm_skylinetemp1',
-  fragmentShader:
-    'uniform sampler2D colorTexture;' +
-    'uniform sampler2D redTexture;' +
-    'uniform sampler2D silhouetteTexture;' +
-    'in vec2 v_textureCoordinates;' +
-    'out vec4 fragColor;' +
-    'void main(void)' +
-    '{' +
-    'vec4 redcolor=texture(redTexture, v_textureCoordinates);' +
-    'vec4 silhouetteColor = texture(silhouetteTexture, v_textureCoordinates);' +
-    'vec4 color = texture(colorTexture, v_textureCoordinates);' +
-    'if(redcolor.r == 1.0){' +
-    `fragColor = mix(color, vec4${color}, silhouetteColor.a);` +
-    '}' +
-    'else{' +
-    'fragColor = color;' +
-    '}' +
-    '}',
-  uniforms: {
-    redTexture: postProccessStage.name,
-    silhouetteTexture: edgeDetection.name,
-    lineWidth: 0 // 控制线条宽度的 uniform 变量
-  },
-  vertexShader:
-    'attribute vec3 position;' +
-    'attribute vec4 color;' +
-    'uniform mat4 modelViewProjection;' +
-    'uniform float lineWidth;' +
-    'varying vec4 v_color;' +
-    'void main() {' +
-    'gl_Position = modelViewProjection * vec4(position, 1.0);' +
-    'v_color = color;' +
-    'vec3 normal = normalize(cross(dFdx(position), dFdy(position)));' +
-    'gl_Position.xyz += normal * (lineWidth / 2.0);' +
-    '}'
-});
+          name: 'czm_skylinetemp1',
+          fragmentShader:
+            'uniform sampler2D colorTexture;' +
+            'uniform sampler2D redTexture;' +
+            'uniform sampler2D silhouetteTexture;' +
+            'in vec2 v_textureCoordinates;' +
+            'out vec4 fragColor;' +
+            'void main(void)' +
+            '{' +
+            'vec4 redcolor=texture(redTexture, v_textureCoordinates);' +
+            'vec4 silhouetteColor = texture(silhouetteTexture, v_textureCoordinates);' +
+            'vec4 color = texture(colorTexture, v_textureCoordinates);' +
+            'if(redcolor.r == 1.0){' +
+            `fragColor = mix(color, vec4${color}, silhouetteColor.a);` +
+            '}' +
+            'else{' +
+            'fragColor = color;' +
+            '}' +
+            '}',
+          uniforms: {
+            redTexture: postProccessStage.name,
+            silhouetteTexture: edgeDetection.name,
+            lineWidth: 0 // 控制线条宽度的 uniform 变量
+          },
+          vertexShader:
+            'attribute vec3 position;' +
+            'attribute vec4 color;' +
+            'uniform mat4 modelViewProjection;' +
+            'uniform float lineWidth;' +
+            'varying vec4 v_color;' +
+            'void main() {' +
+            'gl_Position = modelViewProjection * vec4(position, 1.0);' +
+            'v_color = color;' +
+            'vec3 normal = normalize(cross(dFdx(position), dFdy(position)));' +
+            'gl_Position.xyz += normal * (lineWidth / 2.0);' +
+            '}'
+        });
         var postProccessStage = new proxy.$Cesium.PostProcessStageComposite({
           name: 'czm_skyline',
           stages: [edgeDetection, postProccessStage, postProccessStage1],
@@ -198,6 +207,15 @@ export default defineComponent({
     });
     // todo
     onMounted(() => {
+      let dom=document.querySelector('button')!;
+      const Vnode= h(btn)
+   const htmldiv = document.createElement('div');
+   render(Vnode,htmldiv)
+   document.body.appendChild(htmldiv.firstElementChild!);
+  //dom.insertAdjacentElement('afterend',htmldiv)
+    
+      
+    render(h('div', null, 'hello world'),dom);
       //alert(defineProps)
       console.log(props);
       //methods.startRendering()

@@ -27,7 +27,7 @@
 import config from './config.json'
 import { ElMessageBox } from 'element-plus'
 import { reactive } from 'vue';
-
+console.log(config, 'headerCOnfig')
 const data = reactive({
     dialogVisible: false,
     isAnalysis: false,

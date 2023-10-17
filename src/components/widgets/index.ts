@@ -1,5 +1,6 @@
 import son from './son.vue'
 import fatherVue from './father.vue'
+import { App } from 'vue';
 const comps = [
     son,
     fatherVue
@@ -13,4 +14,10 @@ function register(app: any) {
 }
 export {
     register
+}
+
+export default {
+    install: (app: App) => {
+        app.component("fatherVue", fatherVue);
+    }
 }
