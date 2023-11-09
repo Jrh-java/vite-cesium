@@ -43,17 +43,22 @@
             <el-divider direction="vertical" v-if="index !== comps.length - 1" />
         </div>
     </div>
+    <panel ref="panelVue"></panel>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import panel from '@/components/cesium/panel/panel.vue'
+import test from '@/components/cesium/analysis/test.vue'
+console.log(panel)
+const panelVue= ref()
 const comps=ref([
     {
         name:"地图",
         img:"iconfont icondiqiu",
         isActive:false,
         isDropdown:false,
+        component:"test"
     },
     {
         name:"分析",    
@@ -126,6 +131,12 @@ const toggleDropMenu= (dropdowniItem: any, item: any) => {
 }
 const toggleActivation= (index: number, item: any) => {
     item.isActive = !item.isActive
+    panelVue.value.changeWidget({
+        name: item.name,
+        component: item.component,
+        isActive: item.isActive,
+    })
+    
 }
 </script>
 

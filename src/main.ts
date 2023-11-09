@@ -12,7 +12,8 @@ import 'element-plus/dist/index.css'
 import skyline from './components/cesium/analysis/index'
 import fatherVue from './components/widgets/index';
 import testModule from './components/test/index'
-import entity from './components/cesium/entity/index'
+import cesiumWidget from './components/cesium/index'
+import earth from './components/earth.vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 const pinia = createPinia();
 const app = createApp(App)
@@ -20,8 +21,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
   }
 app.use(ElementPlus)
-app.use(skyline)
-app.use(entity)
+app.use(cesiumWidget)
+
 fatherVue.install(app)
 testModule.install(app)
 register(app);

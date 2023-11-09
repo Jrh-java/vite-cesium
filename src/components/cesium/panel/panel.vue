@@ -1,12 +1,7 @@
 <template>
-    <div>
-        <div style="height: 100px;width: 100%;position: absolute;top: 0;background: rgb(162 180 247 / 67%);">
-
-            <el-button  @click="data.dialogVisible = true,changeWidget(index)" v-for=" (item,index) in config.widgetArr">
-                {{ item.name  }}
-            </el-button>
-
-            <el-dialog v-model="data.dialogVisible" title="Tips" width="30%" :before-close="handleClose" modal="false">
+    <div v-if="data.isActive">
+       
+            <el-dialog v-model="data.dialogVisible" :title="data.name" width="30%" :before-close="handleClose" draggable :modal=false  :close-on-click-modal="false">
                 <!-- 写一个动态组件 -->
                 <component :is="data.dynamicComponent"></component>
                 <template #footer>
@@ -18,28 +13,37 @@
                     </span>
                 </template>
             </el-dialog>
-        </div>
+ 
     </div>
 </template>
 
 <script setup lang="ts">
 
-import config from './config.json'
 import { ElMessageBox } from 'element-plus'
 import { reactive } from 'vue';
-console.log(config, 'headerCOnfig')
+
 const data = reactive({
     dialogVisible: false,
-    isAnalysis: false,
+    isActive: false,
+    name: '未知组件',
     dynamicComponent: 'skylineVue',
-    widgetIndex: 0
 })
-function changeWidget (index: number){
-    data.widgetIndex = index
-    data.dynamicComponent = config.widgetArr[index].component
+class parameter {
+    name: string
+    component: string
+    isActive: boolean = false
+    constructor(name: string, component: string) {
+        this.name = name
+        this.component = component
+    }
+}
+function changeWidget (param: parameter){
+    data.dynamicComponent = param.component
+    data.name = param.name
+    data.isActive = param.isActive
+    data.dialogVisible = param.isActive
     console.log(data.dynamicComponent)
 }
-console.log(config, 'headerCOnfig')
 const handleClose = (done: () => void) => {
   ElMessageBox.confirm('Are you sure to close this dialog?')
     .then(() => {
@@ -49,6 +53,10 @@ const handleClose = (done: () => void) => {
       // catch error
     })
 }
+defineExpose({
+    changeWidget
+
+})
 </script>
 
 <style lang="scss" scoped></style>

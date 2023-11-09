@@ -80,8 +80,8 @@ viewer.flyTo(label, {
     var viewer :any;
     onMounted(async() => {
         // getViewer()
-        viewer=await store.getViewer()
-        console.log(viewer)
+        // viewer=await store.getViewer()
+        // console.log(viewer)
     })
 
 </script>

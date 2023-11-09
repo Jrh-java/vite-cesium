@@ -25,8 +25,8 @@ const removeClickEvent = () => {
 const store = useStore();
 onMounted(async() => {
         // getViewer()
-        viewer.value=await store.getViewer()
-        console.log(viewer)
+        // viewer.value=await store.getViewer()
+        // console.log(viewer)
     })
 </script>
 

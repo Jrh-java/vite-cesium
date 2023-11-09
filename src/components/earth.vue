@@ -3,6 +3,11 @@
     <!-- <skyline></skyline> -->
     <!-- <labelVue></labelVue> -->
     <!-- <testClick></testClick> -->
+    <!-- <layerList></layerList> -->
+    <!-- <measure></measure> -->
+    <div style="position: absolute; right: 10px;bottom: 10px; "> 
+    <el-button  @click="flyHome" style="width: 35px;height: 35px;"><el-icon><Aim /></el-icon></el-button>
+</div>
 </template>
 
 <script lang="ts" setup>
@@ -15,18 +20,22 @@ import labelVue from './cesium/entity/label.vue';
 import resizepanel from './widgets/resizepanel.vue';
 import testClick from './test/testClick.vue';
 import axios from 'axios';
+import layerList from './cesium/layerList/layerList.vue';
+import { inject } from 'vue';
+import measure from './cesium/measure/measure.vue';
 const store = useStore();
 let viewer: any
-
-onMounted(async () => {
-    console.log()
+window["Cesium"]=Cesium
+onMounted( () => {
+    console.log(new Cesium.Cartesian2(10,20),"我是二维坐标")
     viewer = new Cesium.Viewer('cesiumContainer', { animation: false, timeline: false, fullscreenButton: false, infoBox: false, homeButton: false, geocoder: false, sceneModePicker: false, selectionIndicator: false, baseLayerPicker: false, navigationHelpButton: false });
+   storeToRefs(store).viewer.value = viewer
     window["viewer"]=viewer
     // 隐藏版权信息
     viewer._cesiumWidget._creditContainer.style.display = "none";
-    viewer.scene.setTerrain(
-        new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1))
-    )
+    // viewer.scene.setTerrain(
+    //     new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1))
+    // )
     var rectangle = Cesium.Rectangle.fromDegrees(112.30633331500007, 33.12452755500004, 112.30724648200007, 33.125093348000036);
     var imageryProvider = new Cesium.WebMapServiceImageryProvider({
         url: '/localhostapi/geoserver/ne/wms',
@@ -50,15 +59,15 @@ onMounted(async () => {
     console.log(viewer, Cesium.Cartesian3.fromDegrees(116.16250361, 39.93487418, 500.0))
     // 将WMTS图层添加到Viewer中
     // 创建Cesium的ImageryProvider对象
-    var wmtsImageryProvider = new Cesium.WebMapTileServiceImageryProvider({
-        url: '/localhost8080/geoserver/gwc/service/wmts/rest/vitecesium:yulin/{style}/{TileMatrixSet}/{TileMatrixSet}:{TileMatrix}/{TileRow}/{TileCol}?format=image/png',
-        layer: 'vitecesium:yulin',
-        style: '',
-        format: 'image/png',
-        tileMatrixSetID: 'EPSG:4326',
-        tilingScheme: new Cesium.GeographicTilingScheme()
-    });
-    viewer.scene.imageryLayers.addImageryProvider(wmtsImageryProvider);
+    // var wmtsImageryProvider = new Cesium.WebMapTileServiceImageryProvider({
+    //     url: '/localhost8080/geoserver/gwc/service/wmts/rest/vitecesium:yulin/{style}/{TileMatrixSet}/{TileMatrixSet}:{TileMatrix}/{TileRow}/{TileCol}?format=image/png',
+    //     layer: 'vitecesium:yulin',
+    //     style: '',
+    //     format: 'image/png',
+    //     tileMatrixSetID: 'EPSG:4326',
+    //     tilingScheme: new Cesium.GeographicTilingScheme()
+    // });
+    // viewer.scene.imageryLayers.addImageryProvider(wmtsImageryProvider);
     axios.get('/localhost8080/geoserver/beijin/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=beijin%3APeking&maxFeatures=50&outputFormat=application%2Fjson').then(res => {
         console.log(res)
         viewer.dataSources.add(Cesium.GeoJsonDataSource.load(res.data, {
@@ -68,26 +77,27 @@ onMounted(async () => {
             markerSymbol: '?'
         }))
     })
-    flyToRectangle([
-        Cesium.Cartesian3.fromDegrees(
-            116.16235287,39.93580344,
-            0
-        ),
-        Cesium.Cartesian3.fromDegrees(
-            116.16236361,39.93587749,
-            0
-        ),
-    ])
-    storeToRefs(store).viewer.value = viewer
-    viewer.entities.add({
+    // flyToRectangle([
+    //     Cesium.Cartesian3.fromDegrees(
+    //         116.16235287,39.93580344,
+    //         0
+    //     ),
+    //     Cesium.Cartesian3.fromDegrees(
+    //         116.16236361,39.93587749,
+    //         0
+    //     ),
+    // ])
+    
+    let entity=viewer.entities.add({
 
-        show: false,
+        show: true,
         position: Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883),
         point: {
             pixelSize: 10,
             color: Cesium.Color.BLUE,
         },
     });
+   // viewer.trackedEntity = entity;
 });
 /**
   * @description: 飞行定位到一个矩形
@@ -121,6 +131,10 @@ function flyToRectangle(RectangleCD: Cesium.Cartesian3[]) {
             range: 0.0,
         },
     });
+}
+function flyHome(){
+    viewer.camera.flyHome(1)
+
 }
 </script>
 

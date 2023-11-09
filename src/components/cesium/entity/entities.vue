@@ -10,8 +10,10 @@ import { ref } from 'vue';
 import { useStore } from '../../../store/pinia';
 import * as Cesium from 'cesium'
 const viewer = ref() as any
+
 const store = useStore()
-const addEntities = () => {
+const addEntities = async () => {
+    //viewer.value = await store.getViewer()
     //    // 创建第一个entityCollection
     // var entityCollection1 = new Cesium.EntityCollection();
 
@@ -50,6 +52,7 @@ const addEntities = () => {
     // 将entityCollection2添加到viewer.entities中
     // viewer.value.entities.add(entityCollection2);
     var parentEntity = viewer.value.entities.add({
+        // name:"我是一个实体组",
         position: Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883),
         ellipse: {
             semiMinorAxis: 100000.0,
@@ -75,7 +78,9 @@ const addEntities = () => {
 }
 onMounted(async () => {
     // getViewer()
-    viewer.value = await store.getViewer()
+        viewer.value =await useStore().getViewer()
+    console.log(viewer.value)
+ 
     console.log(viewer)
 })
 </script>
